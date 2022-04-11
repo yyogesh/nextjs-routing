@@ -1,8 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/product');
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -21,8 +27,18 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
+        <p>
+          <button onClick={handleClick}>Document</button>
+        </p>
+
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
+          <Link href={'/product'} className={styles.card}>
+            <a>Product</a>
+          </Link>
+          <Link href={'/customer'} className={styles.card}>
+            <a>Customer</a>
+          </Link>
+          {/* <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
@@ -48,7 +64,7 @@ export default function Home() {
             <p>
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
-          </a>
+          </a> */}
         </div>
       </main>
 
